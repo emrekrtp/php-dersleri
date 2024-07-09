@@ -1,3 +1,37 @@
+<?php
+$kategoriler = [
+    "Programlama",
+    "Web Geliştirme",
+    "Mobil Uygulamalar",
+    "Ofis Uygulamalar"
+];
+$kurslar = [
+    [
+        "id" => 1,
+        "baslik" => "Web Geliştirme",
+        "aciklama" => "guzel bir kurs",
+        "resim" => "img/1.jpg",
+        "onay" => true,
+    ],
+    [
+        "id" => 2,
+        "baslik" => "Python Kursu",
+        "aciklama" => "guzel bir kurs",
+        "resim" => "img/2.jpg",
+        "onay" => true,
+    ],
+    [
+        "id" => 3,
+        "baslik" => "Javascript Kursu",
+        "aciklama" => "guzel bir kurs",
+        "resim" => "img/3.jpg",
+        "onay" => false,
+    ]
+];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,62 +59,35 @@
     <div class="row">
         <div class="col-md-3">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">Programlama</a>
-                <a href="#" class="list-group-item list-group-item-action">Web Geliştirme</a>
-                <a href="#" class="list-group-item list-group-item-action">Mobil Uygulamalar</a>
+            <?php foreach($kategoriler as $kategori): ?>    
+            <a href="#" class="list-group-item list-group-item-action">
+                <?php echo $kategori; ?>
+            </a>
+            <?php endforeach; ?>    
             </div>
         </div>
-        <div class="col-md-9">
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="img/1.jpg" class="img-fluid rounded-start" alt="Web Geliştirme">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <div class="card-body">
-                            <h5 class="card-title">Web Geliştirme</h5>
-                                <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quos maiores harum voluptates quas dolorem, earum explicabo. Hic, in aut.
-                                </p>
-                            </div>
-                        </div>
+            <div class="col-9">
+                <?php foreach($kurslar as $kurs): ?>
+                    <?php if($kurs["onay"]): ?>
+                        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="<?php echo $kurs["resim"]; ?>" class="img-fluid rounded-start" alt="Web Geliştirme">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <?php echo $kurs["baslik"]; ?>
+                        </h5>
+                        <p class="card-text">
+                            <?php echo $kurs["aciklama"]; ?>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="img/2.jpg" class="img-fluid rounded-start" alt="Web Geliştirme">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <div class="card-body">
-                            <h5 class="card-title">Python Kursu</h5>
-                                <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quos maiores harum voluptates quas dolorem, earum explicabo. Hic, in aut.
-                                </p>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="img/3.jpg" class="img-fluid rounded-start" alt="Web Geliştirme">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <div class="card-body">
-                            <h5 class="card-title">Javascript Kursu</h5>
-                                <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quos maiores harum voluptates quas dolorem, earum explicabo. Hic, in aut.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
